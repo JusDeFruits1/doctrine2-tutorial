@@ -13,8 +13,10 @@ class User
     #[ORM\Column(type: 'integer')]
     private int|null $id = null;
 
-    private $reportedBugs = null;
-    private $assignedBugs = null;
+    #[ORM\OneToMany(targetEntity: Bug::class, mappedBy: 'reporter')]
+    private $reportedBugs;
+    #[ORM\OneToMany(targetEntity: Bug::class, mappedBy: 'engineer')]
+    private $assignedBugs;
 
     public function __construct()
     {
