@@ -1,6 +1,7 @@
 <?php
 //src/User.php
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'users')]
@@ -11,6 +12,15 @@ class User
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private int|null $id = null;
+
+    private $reportedBugs = null;
+    private $assignedBugs = null;
+
+    public function __construct()
+    {
+        $this->reportedBugs = new ArrayCollection();
+        $this->assignedBugs = new ArrayCollection();
+    }
     /**@varstring*/
     #[ORM\Column(type: 'string')]
     private string $name;
