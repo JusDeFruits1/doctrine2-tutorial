@@ -1,5 +1,5 @@
 <?php
-// close_bug.php
+// close_bug.php <bug-id>
 require_once "bootstrap.php";
 
 $theBugId = $argv[1];
