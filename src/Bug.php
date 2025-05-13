@@ -5,27 +5,26 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-
-#[ORM\Entity]
-#[ORM\Table(name: 'bugs')]
-class Bug
-{
-    #[ORM\Id]
-    #[ORM\Column(type: 'integer')]
-    #[ORM\GeneratedValue]
-    private int|null $id = null;
-    #[ORM\Column(type: 'string')]
-    private string $description;
-    #[ORM\Column(type: 'datetime')]
-    private DateTime $created;
-    #[ORM\Column(type: 'string')]
-    private string $status;
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'assignedBugs')]
-    private User|null $engineer = null;
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'reportedBugs')]
-    private User|null $reporter;
-    #[ORM\ManyToMany(targetEntity: Product::class)]
-    private $products;
+ #[ORM\Entity]
+ #[ORM\Table(name: 'bugs')]
+ class Bug
+ {
+ #[ORM\Id]
+ #[ORM\Column(type: 'integer')]
+ #[ORM\GeneratedValue]
+ private int|null$id =null;
+ #[ORM\Column(type: 'string')]
+ private string$description;
+ #[ORM\Column(type: 'datetime')]
+ private DateTime$created;
+ #[ORM\Column(type: 'string')]
+ private string$status;
+ #[ORM\ManyToOne(targetEntity: User::class,inversedBy: 'assignedBugs')]
+ private User|null$engineer =null;
+ #[ORM\ManyToOne(targetEntity: User::class,inversedBy: 'reportedBugs')]
+ private User|null$reporter;
+ #[ORM\ManyToMany(targetEntity: Product::class)]
+ private $products;
     
 
     public function __construct()
