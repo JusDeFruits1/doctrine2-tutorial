@@ -32,6 +32,10 @@ use Doctrine\ORM\Mapping as ORM;
         $this->products = new ArrayCollection();
     }
 
+    public function close(){
+        $this->status = 'CLOSE';
+    }
+
     public function setEngineer(User $engineer): void
     {
         $engineer->assignedToBug($this);
